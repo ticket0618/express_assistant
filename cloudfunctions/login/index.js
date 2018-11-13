@@ -10,8 +10,9 @@
  * 
  */
 exports.main = (event, context) => {
-  console.log(event)
-  console.log(context)
+  console.log("云函数main事件：" + event)
+  console.log("云函数main上下文：" + context)
+  console.log("云函数main用户openid：" + event.userInfo.openId)
 
   // 可执行其他自定义逻辑
   // console.log 的内容可以在云开发云函数调用日志查看

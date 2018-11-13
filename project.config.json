@@ -9,7 +9,7 @@
 		"newFeature": true
 	},
 	"appid": "wx44d93c18428cf2c6",
-	"projectname": "express_assistant",
+	"projectname": "express_assistant-test",
 	"libVersion": "2.2.5",
 	"condition": {
 		"search": {
@@ -32,8 +32,8 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"name": "index guide",
+					"pathName": "pages/index/index"
 				}
 			]
 		}
