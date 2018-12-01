@@ -1,8 +1,52 @@
-<!--index.wxml-->
-<view class="container">
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+      <view class="page__title"></view>
+      <view class="page__desc"></view>
+    </view>
 
-  <view>
-    <text>首页测试test</text>
-  </view>
+    <view class="page__bd">
 
+      <view class="weui-cells__title">请选择快递公司</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__bd">
+            <picker bindchange="bindExpressComChange" value="{{expressComIndex}}" range="{{expressComs}}">
+              <view class="weui-select">{{expressComs[expressComIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">快递单号</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入运单号" />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">联系人</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入联系人(自己的姓名，方便联系)" />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">联系人手机号</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入手机号(自己的手机，方便联系)" />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="showTopTips">提交</button>
+      </view>
+
+    </view>
 </view>

@@ -6,3 +6,7 @@ page {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.section {
+  padding-left: 10pt;
+}

@@ -1,6 +1,10 @@
 //index.js
 const app = getApp()
 
+// 获取数据库引用
+//const db = wx.cloud.database()
+const db = wx.cloud.database();
+
 Page({
 
   /**
@@ -14,6 +18,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    db.collection('expressCom').get({
+      success: function (res) {
+        console.log(res.data);
+      }
+    });
 
   },
 
