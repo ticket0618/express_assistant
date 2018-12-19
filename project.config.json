@@ -6,7 +6,8 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": true
 	},
 	"appid": "wx44d93c18428cf2c6",
 	"projectname": "express_assistant-test",
