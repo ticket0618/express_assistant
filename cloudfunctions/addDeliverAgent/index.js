@@ -10,10 +10,10 @@ exports.main = async (event, context) => {
   try {
     const wxCtx = cloud.getWXContext();
     console.log("微信上下文环境：", wxCtx);
-    console.log("上下文环境：", context);
-    const { userInfo, expressComCode, expressNum, contactName, contactMobile, latitude,  longitude } = event;
-    console.log('用户信息', userInfo);
-    console.log('请求参数：expressComCode=%s, expressNum=%s, contactName=%s, contactMobile=%s, latitude=%s, longitude=%s', expressComCode, expressNum, contactName, contactMobile, latitude, longitude);
+    //console.log("上下文环境：", context);
+    const { userInfo, expressComCode, expressNum, contactName, contactMobile, nickName,latitude,  longitude } = event;
+    console.log('App用户信息', userInfo);
+    console.log('请求参数：expressComCode=%s, expressNum=%s, contactName=%s, contactMobile=%s, nickName=%s, latitude=%s, longitude=%s', expressComCode, expressNum, contactName, contactMobile, nickName, latitude, longitude);
 
     const res = await cloud.callFunction({
       // 要调用的云函数名称
@@ -36,8 +36,9 @@ exports.main = async (event, context) => {
         contactMobile: contactMobile,
         paid: false,
         payFee: 0,
+        appId: userInfo.appId,
         openId: userInfo.openId,
-        userInfo: userInfo,
+        nickName: nickName,
         location: new db.Geo.Point(longitude, latitude),
         createTime: new Date()
       }

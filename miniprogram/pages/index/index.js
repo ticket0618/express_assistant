@@ -20,6 +20,7 @@ Page({
     expressNum: '',
     contactName: '',
     contactMobile: '',
+    nickName: '',
     latitude: 0,
     longitude: 0
   },
@@ -28,13 +29,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
 
     // db.collection('expressCom').get({
     //   success: function (res) {
     //     console.log(res.data);
     //   }
     // });
-    let that = this;
+
+    wx.login({
+      success(res) {
+        console.log("登录状态：", res);
+      }
+    });
+
     wx.getLocation({
       type: 'wgs84',
       success(res) {
@@ -42,7 +50,7 @@ Page({
         that.setData({
           latitude: res.latitude,
           longitude: res.longitude
-        })
+        });
       }
     });
 
@@ -61,7 +69,7 @@ Page({
           names[i] = com.name;
         }
         var initIndex = 0;
-        this.setData({
+        that.setData({
           expressComs: coms,
           expressComIndexs: indexs,
           expressComCodes: codes,
@@ -71,7 +79,7 @@ Page({
           expressComName: names[initIndex]
         })
       }
-    })
+    });
 
   },
 
@@ -79,7 +87,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    //wx.getUserInfo({
+      //success(res) {
+        //console.log("用户信息：", res);
+      //}
+    //});
   },
 
   /**
@@ -154,8 +166,13 @@ Page({
   },
 
   saveDeliverAgent: function (e) {
-    console.log("保存快递信息：", this.data);
-    if (null == this.data.expressComCode || '' == this.data.expressComCode) {
+    var that = this;
+
+    console.log("保存快递数据：", that.data);
+    console.log("保存用户昵称：", that.data.nickName);
+    console.log("保存快递公司：", that.data.expressComName);
+
+    if (null == that.data.expressComCode || '' == that.data.expressComCode) {
       wx.showModal({
         title: '输入有误',
         content: '请选择快递公司',
@@ -167,7 +184,7 @@ Page({
       });
       return;
     }
-    if (null == this.data.expressNum || '' == this.data.expressNum) {
+    if (null == that.data.expressNum || '' == that.data.expressNum) {
       wx.showModal({
         title: '输入有误',
         content: '请输入运单号',
@@ -179,15 +196,17 @@ Page({
       })
       return;
     }
+
     wx.cloud.callFunction({
       name: 'addDeliverAgent',
       data: {
-        expressComCode: this.data.expressComCode,
-        expressNum: this.data.expressNum,
-        contactName: this.data.contactName,
-        contactMobile: this.data.contactMobile,
-        latitude: this.data.latitude,
-        longitude: this.data.longitude
+        expressComCode: that.data.expressComCode,
+        expressNum: that.data.expressNum,
+        contactName: that.data.contactName,
+        contactMobile: that.data.contactMobile,
+        nickName: that.data.nickName,
+        latitude: that.data.latitude,
+        longitude: that.data.longitude
       },
       complete: res => {
         console.log("保存快递完成", res);
@@ -211,6 +230,14 @@ Page({
         })
       }
     })
+  },
+
+  onGotUserInfo: function (e) {
+    //console.log("获取用户信息：", e.detail.userInfo);
+    var that = this;
+    that.setData({
+      'nickName': e.detail.userInfo.nickName
+    });
   }
 
 })

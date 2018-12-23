@@ -45,7 +45,7 @@
       </view>
 
       <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" bindtap="saveDeliverAgent">提交</button>
+        <button class="weui-btn" type="primary" bindtap="saveDeliverAgent" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">提交</button>
       </view>
 
     </view>
