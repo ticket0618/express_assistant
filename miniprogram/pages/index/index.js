@@ -31,12 +31,6 @@ Page({
   onLoad: function (options) {
     let that = this;
 
-    // db.collection('expressCom').get({
-    //   success: function (res) {
-    //     console.log(res.data);
-    //   }
-    // });
-
     wx.login({
       success(res) {
         console.log("登录状态：", res);
@@ -87,11 +81,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    //wx.getUserInfo({
-      //success(res) {
-        //console.log("用户信息：", res);
-      //}
-    //});
+    
   },
 
   /**
@@ -112,7 +102,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -165,8 +155,8 @@ Page({
     })
   },
 
-  saveDeliverAgent: function (e) {
-    var that = this;
+  saveDeliverAgent: function () {
+    let that = this;
 
     console.log("保存快递数据：", that.data);
     console.log("保存用户昵称：", that.data.nickName);
@@ -232,12 +222,13 @@ Page({
     })
   },
 
-  onGotUserInfo: function (e) {
-    //console.log("获取用户信息：", e.detail.userInfo);
-    var that = this;
+  bindGetUserInfo(e) {
+    console.log("绑定用户信息：", e.detail.userInfo);
+    let that = this;
     that.setData({
       'nickName': e.detail.userInfo.nickName
     });
+    that.saveDeliverAgent();
   }
 
 })
