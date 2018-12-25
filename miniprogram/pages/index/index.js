@@ -20,7 +20,7 @@ Page({
     expressNum: '',
     contactName: '',
     contactMobile: '',
-    nickName: '',
+    uInfo: {},
     latitude: 0,
     longitude: 0
   },
@@ -159,8 +159,6 @@ Page({
     let that = this;
 
     console.log("保存快递数据：", that.data);
-    console.log("保存用户昵称：", that.data.nickName);
-    console.log("保存快递公司：", that.data.expressComName);
 
     if (null == that.data.expressComCode || '' == that.data.expressComCode) {
       wx.showModal({
@@ -194,7 +192,7 @@ Page({
         expressNum: that.data.expressNum,
         contactName: that.data.contactName,
         contactMobile: that.data.contactMobile,
-        nickName: that.data.nickName,
+        uInfo: that.data.uInfo,
         latitude: that.data.latitude,
         longitude: that.data.longitude
       },
@@ -226,7 +224,7 @@ Page({
     console.log("绑定用户信息：", e.detail.userInfo);
     let that = this;
     that.setData({
-      'nickName': e.detail.userInfo.nickName
+      uInfo: e.detail.userInfo
     });
     that.saveDeliverAgent();
   }
