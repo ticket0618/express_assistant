@@ -13,6 +13,13 @@ Page({
    */
   onLoad: function (options) {
 
+    wx.cloud.callFunction({
+      name: 'findDeliverAgents',
+      complete: res => {
+        console.log("快递记录", res.result.data);
+      }
+    });
+
   },
 
   /**
