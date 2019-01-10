@@ -23,7 +23,32 @@ exports.main = async (event, context) => {
   }
   const offset = (pageNo - 1) * pageSize;
   console.log("查询快递记录处理参数：pageNo=%s, pageSize=%s, offset=%s", pageNo, pageSize, offset);
+
   const deliverAgent = db.collection('deliverAgent');
-  const list = await deliverAgent.skip(offset).limit(pageSize).orderBy('createTime', 'desc').get();
-  return list;
+
+  let total = 0;
+  await deliverAgent.count().then(res => {
+    total = res.total;
+  });
+  console.log("查询快递记录总数：total=%s", total);
+
+  let pageCount = 0;
+  if (total % pageSize == 0) {
+    pageCount = total / pageSize;
+  } else {
+    pageCount = parseInt(total / pageSize) + 1;
+  }
+  console.log("查询快递总页数：pageCount=%s", pageCount);
+
+  const dbRes = await deliverAgent.skip(offset).limit(pageSize).orderBy('createTime', 'desc').get();
+
+  let resObj = {};
+
+  resObj.list = dbRes.data;
+  resObj.pageNo = pageNo;
+  resObj.pageSize = pageSize;
+  resObj.total = total;
+  resObj.pageCount = pageCount;
+
+  return resObj;
 }

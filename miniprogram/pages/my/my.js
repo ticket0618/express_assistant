@@ -5,20 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pageNo: 1,
+    pageSize: 10,
+    hasMoreData: true,
+    contentList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
 
-    wx.cloud.callFunction({
-      name: 'findDeliverAgents',
-      complete: res => {
-        console.log("快递记录", res.result.data);
-      }
-    });
+    that.getContentInfo('正在加载数据...');
+
+    // wx.cloud.callFunction({
+    //   name: 'findDeliverAgents',
+    //   data: {
+    //     pageNo: that.data.pageNo,
+    //     pageSize: that.data.pageSize
+    //   },
+    //   complete: res => {
+    //     console.log("快递记录", res.result.data);
+    //   }
+    // });
 
   },
 
@@ -69,5 +79,55 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  getContentInfo: function (message) {
+    wx.showLoading({
+      title: message,
+    });
+    
+    var that = this;
+
+    wx.cloud.callFunction({
+      name: 'findDeliverAgents',
+      data: {
+        pageNo: that.data.pageNo,
+        pageSize: that.data.pageSize
+      },
+      success: res => {
+        console.log("返回快递记录", res);
+        var contentListTem = that.data.contentList;
+        if (that.data.pageNo == 1) {
+          contentListTem = [];
+        }
+        var contentList = res.result.list;
+        if (that.data.pageNo >= res.result.pageCount) {
+          that.setData({
+            contentList: contentListTem.concat(contentList),
+            hasMoreData: false
+          })
+        } else {
+          that.setData({
+            contentList: contentListTem.concat(contentList),
+            hasMoreData: true,
+            pageNo: that.data.pageNo + 1
+          })
+        }
+      },
+      fail: res => {
+        console.log("加载数据失败");
+        wx.showToast({
+          title: '加载数据失败',
+          icon: none
+        });
+      },
+      complete: res => {
+        console.log("加载数据完成");
+        wx.hideLoading();
+        wx.hideNavigationBarLoading(); // 完成停止加载
+        wx.stopPullDownRefresh(); // 停止下拉刷新
+      }
+    });
   }
+
 })
