@@ -99,6 +99,14 @@ Page({
           contentListTem = [];
         }
         var contentList = res.result.list;
+        for (var i = 0; i < contentList.length; i++) {
+          var tmp = contentList[i];
+          if (i % 2 == 0) {
+            tmp.bg = '#FFFFFF';
+          } else {
+            tmp.bg = '#CCCCCC';
+          }
+        }
         if (that.data.pageNo >= res.result.pageCount) {
           that.setData({
             contentList: contentListTem.concat(contentList),

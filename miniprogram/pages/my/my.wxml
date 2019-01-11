@@ -10,10 +10,10 @@
   <view class="page__bd">
 
     <view class="weui-cells__title">我的快递列表</view>
-    <view class="weui-cells weui-cells_after-title" wx:for="{{contentList}}" wx:for-item="item" wx:key="_id">
+    <view class="weui-cells weui-cells_after-title" wx:for="{{contentList}}" wx:for-item="item" wx:key="_id" style="background: {{item.bg}};">
       <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
-          <view style="background-color:#1296db;border-radius:2px"><text space="nbsp"> {{item.expressComName}} </text></view>
+          <view><text space="nbsp"> {{item.expressComName}} </text></view>
         </view>
         <view class="weui-cell__bd"><text space="nbsp"> {{item.expressNum}}</text></view>
         <view class="weui-cell__ft weui-cell__ft_in-access">{{item.contactName}}</view>
