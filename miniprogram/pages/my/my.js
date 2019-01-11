@@ -1,4 +1,4 @@
-// pages/my/my.js
+
 Page({
 
   /**
@@ -18,18 +18,6 @@ Page({
     let that = this;
 
     that.getContentInfo('正在加载数据...');
-
-    // wx.cloud.callFunction({
-    //   name: 'findDeliverAgents',
-    //   data: {
-    //     pageNo: that.data.pageNo,
-    //     pageSize: that.data.pageSize
-    //   },
-    //   complete: res => {
-    //     console.log("快递记录", res.result.data);
-    //   }
-    // });
-
   },
 
   /**
@@ -64,14 +52,24 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log('下拉');
+    wx.showNavigationBarLoading(); // 在标题栏中显示加载
+    this.data.pageNo = 1;
+    this.getContentInfo('正在刷新数据');
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log("上拉触底");
+    if (this.data.hasMoreData) {
+      this.getContentInfo('加载更多数据');
+    } else {
+      wx.showToast({
+        title: '没有更多数据'
+      });
+    }
   },
 
   /**
