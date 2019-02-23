@@ -6,6 +6,9 @@ const db = cloud.database();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  const { OPENID, APPID, UNIONID } = cloud.getWXContext();
+  console.log("当前登录用户：openid=%s", OPENID);
+
   let pageNo = 1;
   let pageSize = 10;
   if (typeof (event.pageNo) != "undefined") {
@@ -24,7 +27,9 @@ exports.main = async (event, context) => {
   const offset = (pageNo - 1) * pageSize;
   console.log("查询快递记录处理参数：pageNo=%s, pageSize=%s, offset=%s", pageNo, pageSize, offset);
 
-  const deliverAgent = db.collection('deliverAgent');
+  const deliverAgent = db.collection('deliverAgent').where({
+    openId: OPENID // 填入当前用户 openid
+  });
 
   let total = 0;
   await deliverAgent.count().then(res => {
