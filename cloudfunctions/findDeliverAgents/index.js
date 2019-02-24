@@ -28,6 +28,7 @@ exports.main = async (event, context) => {
   console.log("查询快递记录处理参数：pageNo=%s, pageSize=%s, offset=%s", pageNo, pageSize, offset);
 
   const deliverAgent = db.collection('deliverAgent').where({
+    deleted: 0,
     openId: OPENID // 填入当前用户 openid
   });
 

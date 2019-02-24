@@ -40,7 +40,8 @@ exports.main = async (event, context) => {
         openId: userInfo.openId,
         uInfo: uInfo,
         location: new db.Geo.Point(longitude, latitude),
-        createTime: new Date()
+        createTime: new Date(),
+        deleted: 0
       }
     })
   } catch (e) {
