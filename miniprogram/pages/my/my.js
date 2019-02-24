@@ -134,6 +134,41 @@ Page({
         wx.stopPullDownRefresh(); // 停止下拉刷新
       }
     });
-  }
+  },
+
+  // 长按
+  longPress: function (e) {
+    console.log("长按事件：", e);
+    console.log("事件ID=%s", e.currentTarget.dataset.recordId);
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确认要删除该快递记录？',
+      showCancel: true,
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定删除');
+          wx.cloud.callFunction({
+            name: 'removeDeliverAgent',
+            data: {
+              recordId: e.currentTarget.dataset.recordId
+            },
+            success: res => {
+              console.log("删除记录成功", res);
+              that.onLoad();
+            },
+            fail: res => {
+              console.log("删除记录失败");
+            },
+            complete: res => {
+              console.log("删除记录完成");
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消删除');
+        }
+      }
+    });
+  },
 
 })

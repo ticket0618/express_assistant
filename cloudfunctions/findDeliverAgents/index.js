@@ -29,7 +29,7 @@ exports.main = async (event, context) => {
 
   const deliverAgent = db.collection('deliverAgent').where({
     deleted: 0,
-    openId: OPENID // 填入当前用户 openid
+    openId: OPENID
   });
 
   let total = 0;
