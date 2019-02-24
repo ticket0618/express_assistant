@@ -104,7 +104,7 @@ Page({
           if (i % 2 == 0) {
             tmp.bg = '#FFFFFF';
           } else {
-            tmp.bg = '#CCCCCC';
+            tmp.bg = '#00E5EE';
           }
         }
         if (that.data.pageNo >= res.result.pageCount) {
