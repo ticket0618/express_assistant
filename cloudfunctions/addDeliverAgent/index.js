@@ -39,7 +39,9 @@ exports.main = async (event, context) => {
         appId: userInfo.appId,
         openId: userInfo.openId,
         uInfo: uInfo,
-        location: new db.Geo.Point(longitude, latitude),
+        //location: new db.Geo.Point(longitude, latitude),
+        latitude: latitude,
+        longitude: longitude,
         createTime: new Date(),
         deleted: 0
       }

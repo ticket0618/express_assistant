@@ -104,7 +104,7 @@ Page({
           if (i % 2 == 0) {
             tmp.bg = '#FFFFFF';
           } else {
-            tmp.bg = '#00E5EE';
+            tmp.bg = '#90EE90';
           }
         }
         if (that.data.pageNo >= res.result.pageCount) {
@@ -170,5 +170,17 @@ Page({
       }
     });
   },
+
+  showMap: function (e) {
+    let latitude = e.currentTarget.dataset.recordLatitude;
+    let longitude = e.currentTarget.dataset.recordLongitude;
+    console.log("地理位置latitude=%s", latitude);
+    console.log("地理位置longitude=%s", longitude);
+    let pageUrl = '/pages/my/showmap?latitude=' + latitude + '&longitude=' + longitude;
+    console.log("跳转页面=%s", pageUrl);
+    wx.navigateTo({
+      url: pageUrl
+    });
+  }
 
 })
