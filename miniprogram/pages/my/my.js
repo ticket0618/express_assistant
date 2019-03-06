@@ -176,6 +176,14 @@ Page({
     let longitude = e.currentTarget.dataset.recordLongitude;
     console.log("地理位置latitude=%s", latitude);
     console.log("地理位置longitude=%s", longitude);
+    if (typeof (latitude) == "undefined" || null == latitude) {
+      console.log("latitude undefined or null");
+      return;
+    }
+    if (typeof (longitude) == "undefined" || null == longitude) {
+      console.log("longitude undefined or null");
+      return;
+    }
     let pageUrl = '/pages/my/showmap?latitude=' + latitude + '&longitude=' + longitude;
     console.log("跳转页面=%s", pageUrl);
     wx.navigateTo({
