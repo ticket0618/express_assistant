@@ -8,7 +8,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "代发快递",
+    "navigationBarTitleText": "快递助手",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -21,7 +21,7 @@
         "selectedIconPath": "images/proxy_h.png",
         "iconPath": "images/proxy.png",
         "pagePath": "pages/index/index",
-        "text": "代发快递"
+        "text": "保存运单"
       },
       {
         "selectedIconPath": "images/my_h.png",
@@ -33,7 +33,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于定位附近的快递点"
+      "desc": "你的位置信息将保存快递点位置"
     }
   }
 }

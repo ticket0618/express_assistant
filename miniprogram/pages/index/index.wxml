@@ -44,6 +44,17 @@
         </view>
       </view>
 
+      <view class="weui-cells__title" bindtap="chooseLocation">快递点
+        <image src="/res/img/loc.png" style="width: 32rpx; height: 32rpx;" />
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input name="contactMobile" bindinput ="contactMobileInput" class="weui-input" placeholder="{{locAddress}}" />
+          </view>
+        </view>
+      </view>
+
       <view class="weui-btn-area">
         <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">提交</button>
       </view>

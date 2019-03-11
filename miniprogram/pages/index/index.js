@@ -22,7 +22,8 @@ Page({
     contactMobile: '',
     uInfo: {},
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    locAddress: ''
   },
 
   /**
@@ -227,6 +228,27 @@ Page({
       uInfo: e.detail.userInfo
     });
     that.saveDeliverAgent();
+  },
+
+  chooseLocation: function (e) {
+    var that = this;
+    wx.chooseLocation({
+      success: function (res) {
+        console.log('选择地理位置成功：', res);
+        var address = res.name;
+        if (null == address || '' == address) {
+          address = res.address;
+        }
+        that.setData({
+          locAddress: address,
+          latitude: res.latitude,
+          longitude: res.longitude
+        });
+      },
+      fail: function (res) {
+        console.log('选择地理位置失败：', res);
+      }
+    });
   }
 
 })
