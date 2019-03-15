@@ -10,7 +10,7 @@
 		"nodeModules": true
 	},
 	"appid": "wx44d93c18428cf2c6",
-	"projectname": "express_assistant-test",
+	"projectname": "express_assistant",
 	"libVersion": "2.2.5",
 	"condition": {
 		"search": {
