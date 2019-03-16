@@ -18,14 +18,14 @@
     "position": "bottom",
     "list": [
       {
-        "selectedIconPath": "images/proxy_h.png",
-        "iconPath": "images/proxy.png",
+        "selectedIconPath": "res/img/proxy_h.png",
+        "iconPath": "res/img/proxy.png",
         "pagePath": "pages/index/index",
         "text": "保存运单"
       },
       {
-        "selectedIconPath": "images/my_h.png",
-        "iconPath": "images/my.png",
+        "selectedIconPath": "res/img/my_h.png",
+        "iconPath": "res/img/my.png",
         "pagePath": "pages/my/my",
         "text": "我的"
       }
