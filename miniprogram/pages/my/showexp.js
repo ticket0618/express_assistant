@@ -1,5 +1,3 @@
-// miniprogram/pages/my/showexp.js
-var html2wxml = require('../../res/h2w/wxParse.js');
 
 Page({
 
@@ -8,36 +6,35 @@ Page({
    */
   data: {
     expressComCode: '',
-    expressNum: ''
+    expressNum: '',
+    contextList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("expressComCode=%s, expressNum=%s", options.expressComCode, options.expressNum);
+    var expComCode = options.expressComCode;
+    var expNum = options.expressNum;
+    console.log("expressComCode=%s, expressNum=%s", expComCode, expNum);
     var that = this;
     //that.setData({
-      //expressComCode: options.expressComCode,
-      //expressNum: options.expressNum
+      //expressComCode: expComCode,
+      //expressNum: expNum
     //});
     
-    var expApiUrl = "https://m.kuaidi100.com/index_all.html?type=" + options.expressComCode + "&postid=" + options.expressNum;
+    var expApiUrl = "https://m.kuaidi100.com/query?type=" + expComCode + "&postid=" + expNum;
     console.log("快递100接口地址=%s", expApiUrl);
     
     wx.request({
-      url: expApiUrl, // 仅为示例，并非真实的接口地址
+      url: expApiUrl,
       success(res) {
-        console.log("返回数据", res.data);
-        /**
-         * WxParse.wxParse(bindName , type, data, target,imagePadding)
-         * 1.bindName绑定的数据名(必填)
-         * 2.type可以为html或者md(必填)
-         * 3.data为传入的具体数据(必填)
-         * 4.target为Page对象,一般为this(必填)
-         * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选)
-         */
-        html2wxml.wxParse('expinfo', 'html', res.data, that, 10);
+        console.log("返回数据 ", res.data);
+        var status = res.data.status;
+        var data = res.data.data;
+        that.setData({
+          contextList: data
+        });
       }
     });
     

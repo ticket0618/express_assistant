@@ -1,6 +1,5 @@
 /**app.wxss**/
 @import 'weui.wxss';
-@import "/res/h2w/wxParse.wxss";
 
 .container {
   display: flex;

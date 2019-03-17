@@ -6,7 +6,7 @@
 
     <view class="page__bd">
 
-      <view class="weui-cells__title">请选择快递公司</view>
+      <view class="weui-cells__title">请选择快递公司*</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_select">
           <view class="weui-cell__bd">
@@ -17,7 +17,7 @@
         </view>
       </view>
 
-      <view class="weui-cells__title">快递单号</view>
+      <view class="weui-cells__title">快递单号*</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
@@ -30,7 +30,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
-            <input name="contactName" bindinput ="contactNameInput" class="weui-input" placeholder="请输入联系人(自己的姓名，方便联系)" />
+            <input name="contactName" bindinput ="contactNameInput" class="weui-input" placeholder="请输入联系人" />
           </view>
         </view>
       </view>
@@ -39,7 +39,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
-            <input name="contactMobile" bindinput ="contactMobileInput" class="weui-input" placeholder="请输入手机号(自己的手机，方便联系)" />
+            <input name="contactMobile" bindinput ="contactMobileInput" class="weui-input" placeholder="请输入手机号" />
           </view>
         </view>
       </view>

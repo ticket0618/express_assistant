@@ -1,2 +1,14 @@
-<import src="/res/h2w/wxParse.wxml"/>
-<template is="wxParse" data="{{wxParseData:expinfo.nodes}}" />
+<view class="page">
+
+  <view class="page__bd">
+
+    <view class="weui-cells__title">查询结果</view>
+    <view class="weui-cells weui-cells_after-title" wx:for="{{contextList}}" wx:for-item="item" wx:key="_id">
+      <view class="weui-cell">
+        <view class="weui-cell__bd"><text>{{item.time}}\n{{item.context}}</text></view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
