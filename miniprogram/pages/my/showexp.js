@@ -31,9 +31,16 @@ Page({
       success(res) {
         console.log("返回数据 ", res.data);
         var status = res.data.status;
-        var data = res.data.data;
+        var dataList = res.data.data;
+        //that.setData({
+          //contextList: dataList
+        //});
+        dataList.forEach((item) => {
+          item.subDate = item.time.substring(0, 10);
+          item.subTime = item.time.substring(10, 19);
+        });
         that.setData({
-          contextList: data
+          contextList: dataList
         });
       }
     });

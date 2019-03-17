@@ -1,14 +1,19 @@
-<view class="page">
-
-  <view class="page__bd">
-
-    <view class="weui-cells__title">查询结果</view>
-    <view class="weui-cells weui-cells_after-title" wx:for="{{contextList}}" wx:for-item="item" wx:key="_id">
-      <view class="weui-cell">
-        <view class="weui-cell__bd"><text>{{item.time}}\n{{item.context}}</text></view>
+<view class='weui-cell-third' style="padding-top: 20px; padding-bottom: 20px;">
+  <block wx:for="{{contextList}}" wx:key="*this">
+    <view class='weui-cell-list'>
+ 
+      <view class='weui-cell-circle'></view>
+ 
+      <view class='weui-cell-line'>
+        <!--
+        <view class='weui-cell-date'>{{item.subDate}}</view>
+        <view class='weui-cell-time'>{{item.subTime}}</view>
+        -->
+        <view class='weui-cell-datetime'>{{item.time}}</view>
+        <view class='weui-cell-event'>{{item.context}}</view>
       </view>
+ 
     </view>
-
-  </view>
-
+ 
+  </block>
 </view>

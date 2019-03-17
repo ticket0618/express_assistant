@@ -1,1 +1,44 @@
 /* miniprogram/pages/my/showexp.wxss */
+.weui-cell-third{
+  background: #fff;
+}
+.weui-cell-list{
+  background: #fff;
+  margin-left: 30px;
+}
+.weui-cell-line{
+  width: 400px;
+  margin-left: 5px;
+  border-left: 1px solid #ddd;
+  background: #fff;
+}
+.weui-cell-circle{
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  border-color: blue;
+}
+.weui-cell-date{
+  float: left;
+  font-size: 14px;
+  padding-left: 15px;
+  width: 100px;
+}
+.weui-cell-time{
+  font-size: 14px;
+  height: 23px;
+  width: 100px;
+}
+.weui-cell-event{
+  padding-top: 15px;
+  padding-left: 15px;
+  width: 200px;
+}
+.weui-cell-datetime{
+  float: left;
+  font-size: 14px;
+  color: #00DB00;
+  padding-left: 15px;
+  width: 300px;
+}
