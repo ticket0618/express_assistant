@@ -193,6 +193,26 @@ Page({
     wx.navigateTo({
       url: pageUrl
     });
+  },
+
+  showExp: function (e) {
+    let expressComCode = e.currentTarget.dataset.recordExpressComCode;
+    let expressNum = e.currentTarget.dataset.recordExpressNum;
+    console.log("快递编码expressComCode=%s", expressComCode);
+    console.log("运单号expressNum=%s", expressNum);
+    if (typeof (expressComCode) == "undefined" || null == expressComCode) {
+      console.log("expressComCode undefined or null");
+      return;
+    }
+    if (typeof (expressNum) == "undefined" || null == expressNum) {
+      console.log("expressNum undefined or null");
+      return;
+    }
+    let pageUrl = '/pages/my/showexp?expressComCode=' + expressComCode + '&expressNum=' + expressNum;
+    console.log("跳转页面=%s", pageUrl);
+    wx.navigateTo({
+      url: pageUrl
+    });
   }
 
 })

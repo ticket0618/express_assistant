@@ -12,7 +12,7 @@
   <view class="page__bd">
 
     <view class="weui-cells__title">我的快递列表</view>
-    <view class="weui-cells weui-cells_after-title" wx:for="{{contentList}}" wx:for-item="item" wx:key="_id" style="background: {{item.bg}};" data-record-id="{{item._id}}" data-record-latitude="{{item.latitude}}" data-record-longitude="{{item.longitude}}" bindlongpress="longPress" bindtap="showMap">
+    <view class="weui-cells weui-cells_after-title" wx:for="{{contentList}}" wx:for-item="item" wx:key="_id" style="background: {{item.bg}};" data-record-id="{{item._id}}" data-record-express-com-code="{{item.expressComCode}}" data-record-express-num="{{item.expressNum}}" bindlongpress="longPress" bindtap="showExp">
       <view class="weui-cell">
         <view class="weui-cell__bd"><text>{{item.expressComName}}\n{{item.expressNum}}</text></view>
         <view class="weui-cell__ft"><text>{{item.contactName}}\n{{item.contactMobile}}</text></view>

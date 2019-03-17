@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/my/my",
-    "pages/my/showmap"
+    "pages/my/showmap",
+    "pages/my/showexp"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
