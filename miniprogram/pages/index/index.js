@@ -50,7 +50,7 @@ Page({
       }
     });
     */
-    
+
     wx.cloud.callFunction({
       name: 'findExpressCom',
       complete: res => {
@@ -207,6 +207,11 @@ Page({
           title: '提交成功',
           icon: 'success',
           duration: 2000
+        });
+        let pageUrl = '/pages/my/showexp?expressComCode=' + that.data.expressComCode + '&expressNum=' + that.data.expressNum;
+        console.log("跳转页面=%s", pageUrl);
+        wx.navigateTo({
+          url: pageUrl
         });
       },
       fail: err => {

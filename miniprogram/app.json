@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/my/my",
-    "pages/my/showmap",
     "pages/my/showexp"
   ],
   "window": {
@@ -22,7 +21,7 @@
         "selectedIconPath": "res/img/proxy_h.png",
         "iconPath": "res/img/proxy.png",
         "pagePath": "pages/index/index",
-        "text": "保存运单"
+        "text": "查询运单"
       },
       {
         "selectedIconPath": "res/img/my_h.png",

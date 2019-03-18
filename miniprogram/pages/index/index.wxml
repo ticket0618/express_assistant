@@ -58,7 +58,7 @@
       -->
 
       <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">提交</button>
+        <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">查单</button>
       </view>
 
     </view>
