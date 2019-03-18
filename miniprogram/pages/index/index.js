@@ -38,6 +38,7 @@ Page({
       }
     });
 
+    /*
     wx.getLocation({
       type: 'wgs84',
       success(res) {
@@ -48,7 +49,8 @@ Page({
         });
       }
     });
-
+    */
+    
     wx.cloud.callFunction({
       name: 'findExpressCom',
       complete: res => {

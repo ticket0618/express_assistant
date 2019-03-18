@@ -1,5 +1,6 @@
-<view class='weui-cell-third' style="padding-top: 20px; padding-bottom: 20px;">
-  <block wx:for="{{contextList}}" wx:key="*this">
+<view style="padding-top: 20px; padding-left: 30px;">{{errorMsg}}</view>
+<view class='weui-cell-third' style="padding-top: 20px; padding-bottom: 50px;">
+  <block wx:for="{{contextList}}" wx:key="_id">
     <view class='weui-cell-list'>
  
       <view class='weui-cell-circle'></view>

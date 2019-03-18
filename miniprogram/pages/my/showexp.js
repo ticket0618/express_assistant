@@ -7,7 +7,8 @@ Page({
   data: {
     expressComCode: '',
     expressNum: '',
-    contextList: []
+    contextList: [],
+    errorMsg: ''
   },
 
   /**
@@ -31,17 +32,26 @@ Page({
       success(res) {
         console.log("返回数据 ", res.data);
         var status = res.data.status;
-        var dataList = res.data.data;
-        //that.setData({
+        if (status == '200') {
+          var dataList = res.data.data;
+          //that.setData({
           //contextList: dataList
-        //});
-        dataList.forEach((item) => {
-          item.subDate = item.time.substring(0, 10);
-          item.subTime = item.time.substring(10, 19);
-        });
-        that.setData({
-          contextList: dataList
-        });
+          //});
+          dataList.forEach((item) => {
+            item.subDate = item.time.substring(0, 10);
+            item.subTime = item.time.substring(10, 19);
+          });
+          that.setData({
+            contextList: dataList,
+            errorMsg: ''
+          });
+        } else {
+          console.log(res.data.message);
+          that.setData({
+            contextList: [],
+            errorMsg: "运单号不存在或已过期"
+          });
+        }
       }
     });
     

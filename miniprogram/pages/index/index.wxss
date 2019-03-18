@@ -10,3 +10,8 @@ page {
 .section {
   padding-left: 10pt;
 }
+
+.required_star {
+  color: red;
+  font-size: 20px;
+}
